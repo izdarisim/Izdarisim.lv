@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izdarīsim — Īpašumu apsaimniekošana un remonti</title>
+    <meta name="description" content="Profesionāla īpašumu apsaimniekošana, bruģa tīrīšana, jumta mazgāšana, betonēšana, dārza kopšana un citi pakalpojumi visā Latvijā.">
+    <meta name="author" content="Izdarīsim">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Izdarīsim — Īpašumu apsaimniekošana un remonti">
+    <meta property="og:description" content="Profesionāla īpašumu apsaimniekošana, bruģa tīrīšana, jumta mazgāšana, betonēšana, dārza kopšana un citi pakalpojumi visā Latvijā.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: 120 20% 98%;
+            --foreground: 200 25% 15%;
+            --card: 0 0% 100%;
+            --card-foreground: 200 25% 15%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 200 25% 15%;
+            --primary: 152 45% 28%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 42 90% 55%;
+            --secondary-foreground: 200 25% 15%;
+            --muted: 120 15% 94%;
+            --muted-foreground: 200 10% 45%;
+            --accent: 42 90% 55%;
+            --accent-foreground: 200 25% 15%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 120 15% 88%;
+            --input: 120 15% 88%;
+            --ring: 152 45% 28%;
+            --radius: 0.75rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7faf7;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #475569;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #25734a;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-muted {
+            background: #f1f5f9;
+            color: #334155;
+        }
+
+        .btn-muted:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-primary {
+            background: #25734a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-whatsapp {
+            background: #22c55e;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: #1e293b;
+        }
+
+        .btn-gold:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 30% 40%;
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(30, 41, 59, 0.75), rgba(30, 41, 59, 0.5) 50%, rgba(30, 41, 59, 0.1));
+            z-index: 1;
+        }
+
+        .hero-overlay-b {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(30, 41, 59, 0.2), transparent 50%, rgba(30, 41, 59, 0.6));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: 42px;
+            line-height: 1.2;
+            color: white;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .hero .gold-text {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-buttons .btn {
+            padding: 12px 24px;
+            font-size: 14px;
+            box-shadow: 0 10px 30px -10px rgba(37, 115, 74, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-weight: 800;
+            font-size: 32px;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .text-primary { color: #25734a; }
+        .text-gold {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Services Section */
+        .services {
+            background: #eef5ee;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px -4px rgba(37, 115, 74, 0.12);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 12px 40px -8px rgba(37, 115, 74, 0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-card-content {
+            padding: 24px;
+        }
+
+        .service-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(37, 115, 74, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #25734a;
+        }
+
+        .service-card h3 {
+            font-weight: 700;
+            font-size: 18px;
+            color: #1e293b;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* Price List Section */
+        .prices {
+            background: #f7faf7;
+        }
+
+        .prices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .price-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px -4px rgba(37, 115, 74, 0.12);
+        }
+
+        .price-card h3 {
+            font-weight: 700;
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .price-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .price-check {
+            width: 20px;
+            height: 20px;
+            color: #25734a;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .price-item-text {
+            flex: 1;
+        }
+
+        .price-item-text span {
+            display: block;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 4px;
+        }
+
+        .price-item-text strong {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #25734a;
+        }
+
+        .prices-footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .prices-footer p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: #eef5ee;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-pirms {
+            background: #ef4444;
+            color: white;
+        }
+
+        .badge-pec {
+            background: #25734a;
+            color: white;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 41, 59, 0.7), transparent 50%, transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-weight: 700;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-overlay p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* About Section */
+        .about {
+            background: #f7faf7;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-weight: 800;
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+
+        .about p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px -8px rgba(37, 115, 74, 0.2);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .value-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: #eef5ee;
+            border-radius: 8px;
+        }
+
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(37, 115, 74, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #25734a;
+            flex-shrink: 0;
+        }
+
+        .value-card h4 {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .value-card p {
+            font-size: 12px;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #25734a 0%, #1a5c3a 100%);
+        }
+
+        .contact .section-header h2,
+        .contact .section-header p {
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: #eab308;
+        }
+
+        .contact-card h3 {
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .contact-card a,
+        .contact-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+            color: #eab308;
+        }
+
+        .contact-card .note {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        footer .brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #334155;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-buttons {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .mobile-menu.active {
+                display: block;
+                background: white;
+                border-top: 1px solid #e5e7eb;
+                padding: 16px;
+            }
+
+            .mobile-menu a {
+                display: block;
+                padding: 12px 16px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                color: #475569;
+                text-decoration: none;
+            }
+
+            .mobile-buttons {
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .mobile-buttons .btn {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="https://izdarisim.lovable.app/assets/logo.png" alt="Izdarīsim logo">
+            </a>
+            <div class="nav-links">
+                <a href="#pakalpojumi">Pakalpojumi</a>
+                <a href="#cenradis">Cenrādis</a>
+                <a href="#darbi">Mūsu darbi</a>
+                <a href="#par-mums">Par mums</a>
+                <a href="#kontakti">Kontakti</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="tel:+37126288566" class="btn btn-muted">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Zvanīt
+                </a>
+                <a href="https://wa.me/37126288566" target="_blank" class="btn btn-whatsapp">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:izdarisim@gmail.com" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    E-pasts
+                </a>
+            </div>
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#pakalpojumi" onclick="toggleMenu()">Pakalpojumi</a>
+            <a href="#cenradis" onclick="toggleMenu()">Cenrādis</a>
+            <a href="#darbi" onclick="toggleMenu()">Mūsu darbi</a>
+            <a href="#par-mums" onclick="toggleMenu()">Par mums</a>
+            <a href="#kontakti" onclick="toggleMenu()">Kontakti</a>
+            <div class="mobile-buttons">
+                <a href="tel:+37126288566" class="btn btn-muted">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +371 26288566
+                </a>
+                <a href="https://wa.me/37126288566" target="_blank" class="btn btn-whatsapp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:izdarisim@gmail.com" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    E-pasts
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://izdarisim.lovable.app/assets/hero-bg.jpg" alt="Profesionāla īpašumu apsaimniekošana">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-overlay-b"></div>
+        <div class="container hero-content">
+            <h1>Darbi, ko vienmēr atliekat — <span class="gold-text">mēs paveiksim!</span></h1>
+            <p>Profesionāla īpašumu apsaimniekošana, remonti, uzkopšana, betonēšana un citi pakalpojumi visā Latvijā.</p>
+            <div class="hero-buttons">
+                <a href="tel:+37126288566" class="btn btn-gold">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +371 26288566
+                </a>
+                <a href="https://wa.me/37126288566" target="_blank" class="btn btn-whatsapp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:izdarisim@gmail.com" class="btn btn-primary" style="background: rgba(37, 115, 74, 0.8);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    E-pasts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="pakalpojumi" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mūsu <span class="text-primary">pakalpojumi</span></h2>
+                <p>Piedāvājam plašu īpašumu apsaimniekošanas pakalpojumu klāstu</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://izdarisim.lovable.app/assets/service-cleaning.jpg" alt="Bruģa tīrīšana">
+                    <div class="service-card-content">
+                        <div class="service-card-header">
+                            <div class="service-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                            </div>
+                            <h3>Bruģa tīrīšana</h3>
+                        </div>
+                        <p>Augstspiediena mazgāšana bruģa un terašu virsmu atjaunošanai.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://izdarisim.lovable.app/assets/service-roof.jpg" alt="Jumta mazgāšana">
+                    <div class="service-card-content">
+                        <div class="service-card-header">
+                            <div class="service-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </div>
+                            <h3>Jumta mazgāšana</h3>
+                        </div>
+                        <p>Profesionāla jumta tīrīšana ar speciālām iekārtām.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://izdarisim.lovable.app/assets/service-windows.jpg" alt="Logu mazgāšana">
+                    <div class="service-card-content">
+                        <div class="service-card-header">
+                            <div class="service-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                            </div>
+                            <h3>Logu mazgāšana</h3>
+                        </div>
+                        <p>Nevainojami tīri logi — gan iekšpusē, gan ārpusē.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://izdarisim.lovable.app/assets/service-garden.jpg" alt="Dārza kopšana">
+                    <div class="service-card-content">
+                        <div class="service-card-header">
+                            <div class="service-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            </div>
+                            <h3>Dārza kopšana</h3>
+                        </div>
+                        <p>Zāles pļaušana, dzīvžogu griešana un teritorijas uzkopšana.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://izdarisim.lovable.app/assets/service-painting.jpg" alt="Sētas krāsošana">
+                    <div class="service-card-content">
+                        <div class="service-card-header">
+                            <div class="service-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                            </div>
+                            <h3>Sētas krāsošana</h3>
+                        </div>
+                        <p>Koka un metāla sētu atjaunošana un krāsošana.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://izdarisim.lovable.app/assets/service-concrete.jpg" alt="Betonēšana un remonti">
+                    <div class="service-card-content">
+                        <div class="service-card-header">
+                            <div class="service-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            </div>
+                            <h3>Betonēšana un remonti</h3>
+                        </div>
+                        <p>Betona darbi, mazie remontdarbi un citi būvniecības pakalpojumi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price List Section -->
+    <section id="cenradis" class="prices">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="text-gold">Cenrādis</span></h2>
+                <p>Orientējošas cenas — precīzu piedāvājumu sagatavojam pēc objekta apsekošanas</p>
+            </div>
+            <div class="prices-grid">
+                <div class="price-card">
+                    <h3>🧼 Bruģis</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Bruģa tīrīšana</span>
+                            <strong>2.00 – 2.50 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Ar ķīmiju / stipri netīrs</span>
+                            <strong>2.50 – 3.50 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Šuvju aizpildīšana</span>
+                            <strong>0.30 – 0.60 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Lokāla pacelšana / remonts</span>
+                            <strong>15 – 35 €/m²</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🪵 Terases</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Mazgāšana</span>
+                            <strong>2 – 4 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Eļļošana</span>
+                            <strong>4 – 8 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Krāsošana</span>
+                            <strong>5 – 10 €/m²</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🌿 Zāliens</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Pļaušana</span>
+                            <strong>0.05 – 0.15 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Minimālā izbraukuma cena</span>
+                            <strong>20 – 30 €</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Aerācija</span>
+                            <strong>0.10 – 0.25 €/m²</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🌳 Dzīvžoga griešana</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Dzīvžoga griešana</span>
+                            <strong>3 – 8 €/m</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Augsts dzīvžogs</span>
+                            <strong>+30%</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🪚 Žogi</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Mazgāšana</span>
+                            <strong>2 – 4 €/m²</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Krāsošana</span>
+                            <strong>5 – 12 €/m²</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🧱 Betons / remonti</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Plaisu remonts</span>
+                            <strong>20 – 50 € / vieta</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Mazie betonēšanas darbi</span>
+                            <strong>50 – 120 €/m²</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🪵 Koka konstrukcijas</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Nojumes / nelieli darbi</span>
+                            <strong>15 – 25 €/h vai fiksēta cena</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <h3>🧹 Teritorijas uzkopšana</h3>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Vienkārši darbi</span>
+                            <strong>15 – 25 €/h</strong>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <div class="price-item-text">
+                            <span>Ar izvešanu</span>
+                            <strong>+ transporta izmaksas</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="prices-footer">
+                <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; color: #25734a;">⚠️ Minimālais izbraukums: 20–50 €</p>
+                <p>* Cenas var mainīties atkarībā no darba apjoma un sarežģītības. Bezmaksas konsultācija un apsekošana.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="darbi" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Daži piemēri no <span class="text-primary">mūsu ikdienas</span></h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://izdarisim.lovable.app/assets/portfolio-concrete1.jpg" alt="Betona grīdas pulēšana">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <h3>Betona grīdas pulēšana</h3>
+                            <p>Betona darbi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://izdarisim.lovable.app/assets/portfolio-concrete2.jpg" alt="Betona grīdas apdare">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <h3>Betona grīdas apdare</h3>
+                            <p>Betona darbi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge badge-pirms">Pirms</span>
+                    <img src="https://izdarisim.lovable.app/assets/portfolio-paving-before.jpg" alt="Bruģa atjaunošana — Pirms">
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge badge-pec">Pēc</span>
+                    <img src="https://izdarisim.lovable.app/assets/portfolio-paving-after.jpg" alt="Bruģa atjaunošana — Pēc">
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge badge-pirms">Pirms</span>
+                    <img src="https://izdarisim.lovable.app/assets/portfolio-paving-before2.jpg" alt="Bruģa tīrīšana — Pirms">
+                </div>
+                <div class="portfolio-item">
+                    <span class="portfolio-badge badge-pec">Pēc</span>
+                    <img src="https://izdarisim.lovable.app/assets/portfolio-paving-after2.jpg" alt="Bruģa tīrīšana — Pēc">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://izdarisim.lovable.app/assets/service-roof.jpg" alt="Jumta mazgāšana">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <h3>Jumta mazgāšana</h3>
+                            <p>Jūrmalā</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://izdarisim.lovable.app/assets/service-garden.jpg" alt="Dārza kopšana">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <h3>Dārza kopšana</h3>
+                            <p>Piņķos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://izdarisim.lovable.app/assets/service-painting.jpg" alt="Sētas krāsošana">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <h3>Sētas krāsošana</h3>
+                            <p>Āgenskalnā</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://izdarisim.lovable.app/assets/service-windows.jpg" alt="Logu tīrīšana">
+                    <div class="portfolio-overlay">
+                        <div>
+                            <h3>Logu tīrīšana</h3>
+                            <p>Mežaparkā</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="par-mums" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2>Par <span class="text-gold">Izdarīsim</span></h2>
+                    <p>Mēs esam komanda, kas specializējas īpašumu apsaimniekošanā un dažādu saimniecisko darbu veikšanā. Mūsu mērķis — palīdzēt jums uzturēt jūsu īpašumu nevainojamā kārtībā.</p>
+                    <p>No bruģa tīrīšanas līdz betonēšanas darbiem — mēs padarām jūsu māju un pagalmu skaistāku un funkcionālāku. Strādājam visā Latvijā ar individuālu pieeju katram klientam.</p>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Uzticamība</h4>
+                                <p>Garantējam kvalitatīvu darbu izpildi</p>
+                            </div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <h4>Punktualitāte</h4>
+                                <p>Ievērojam norunātos termiņus</p>
+                            </div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                            </div>
+                            <div>
+                                <h4>Kvalitāte</h4>
+                                <p>Izmantojam profesionālas iekārtas</p>
+                            </div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <div>
+                                <h4>Pieredze</h4>
+                                <p>Pieredzējuši speciālisti jūsu rīcībā</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://izdarisim.lovable.app/assets/hero-bg-2.png" alt="Izdarīsim komanda darbā">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakti" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Sazinies ar <span class="text-gold">mums</span></h2>
+                <p style="color: rgba(255,255,255,0.7);">Sazinieties ar mums jau šodien — bezmaksas konsultācija un apsekošana!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3>Telefons</h3>
+                    <a href="tel:+37126288566">+371 26288566</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>E-pasts</h3>
+                    <a href="mailto:izdarisim@gmail.com">izdarisim@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Atrašanās vieta</h3>
+                    <p>Visa Latvija</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Darba laiks</h3>
+                    <p>P–S: 08:00–20:00</p>
+                    <p class="note">*Iespējami darbi arī ārpus darba laika, vienojoties iepriekš</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="brand">Izdarīsim</p>
+            <p>© 2025 Visas tiesības aizsargātas.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
